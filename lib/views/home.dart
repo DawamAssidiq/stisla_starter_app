@@ -5,7 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stisla_starter_app/base_url.dart';
 import 'package:stisla_starter_app/models/category.dart';
 import 'package:http/http.dart' as http;
+import 'package:stisla_starter_app/views/add.dart';
 import 'package:stisla_starter_app/views/auth.dart';
+import 'package:stisla_starter_app/views/edit.dart';
 
 class HomeApp extends StatefulWidget {
   const HomeApp({super.key});
@@ -107,7 +109,7 @@ class _HomeAppState extends State<HomeApp> {
                     color: Colors.purple,
                     child: TextButton(
                       onPressed: () {
-                        print('Tambah Data');
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => const AddData()));
                       },
                       child: const Text(
                         'Tambah Data',
@@ -142,7 +144,7 @@ class _HomeAppState extends State<HomeApp> {
                                 title: Text(snapshot.data![index].name),
                                 trailing: TextButton(
                                   onPressed: () {
-                                    print('edit data');
+                                    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => EditData(id: snapshot.data![index].id, name: snapshot.data![index].name)));
                                   },
                                   child: const Text('Ubah'),
                                 ),
